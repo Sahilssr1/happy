@@ -8,7 +8,18 @@
 </head>
 <body>
     <canvas id="c"></canvas>
-    <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="er.robin" data-description="Support me on Buy me a coffee!" data-message="" data-color="#BD5FFF" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+   <div style="position: fixed; right: 18px; bottom: 18px; background: #BD5FFF; color: white; padding: 12px 20px; border-radius: 8px; font-family: Arial; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" onclick="copyUPI()">
+    💜 Donate via UPI  
+    <div style="font-size: 12px; margin-top: 4px;">UPI: 9939421956@ybl</div>
+</div>
+
+<script>
+function copyUPI() {
+    navigator.clipboard.writeText("9939421956@ybl").then(() => {
+        alert("UPI ID copied: 9939421956@ybl");
+    });
+}
+</script>
     <script src="script.js"></script>
 </body>
 </html>
