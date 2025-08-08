@@ -1,1 +1,599 @@
+html, body, .container {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
 
+body {
+    background: #e74c3c;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+}
+
+.merrywrap {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 100%;
+    max-height: 600px;
+    margin: 0 auto;
+}
+
+.giftbox {
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    left: 50%;
+    margin-left: -150px;
+    bottom: 40px;
+    z-index: 10;
+}
+
+.giftbox > div {
+    background: #34495e;
+    position: absolute;
+}
+
+.giftbox > div:after, .giftbox > div:before {
+    position: absolute;
+    content: "";
+    top: 0;
+}
+
+.giftbox:after {
+    position: absolute;
+    color: #fff;
+    width: 100%;
+    content: "Click Me!";
+    left: 0;
+    bottom: 0;
+    font-size: 24px;
+    text-align: center;
+    transform: rotate(-20deg);
+    transform-origin: 0 0;
+}
+
+.cover {
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 25%;
+    z-index: 2;
+}
+
+.cover:before {
+    position: absolute;
+    height: 100%;
+    left: 50%;
+    width: 50px;
+    transform: translateX(-50%);
+    background: #fdc56d;
+}
+
+.cover > div {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 50%;
+    top: -50px;
+    transform: translateX(-50%);
+}
+
+.cover > div:before, .cover > div:after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    box-shadow: inset 0 0 0 15px #fdc56d;
+    border-radius: 30px;
+    transform-origin: 50% 100%;
+}
+
+.cover > div:before {
+    transform: translateX(-45%) skewY(40deg);
+}
+
+.cover > div:after {
+    transform: translateX(45%) skewY(-40deg);
+}
+
+.box {
+    right: 5%;
+    left: 5%;
+    height: 80%;
+    bottom: 0;
+}
+
+.box:before {
+    width: 50px;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fdc56d;
+}
+
+.box:after {
+    width: 100%;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.icons {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: auto;
+    transform: translateY(-50%);
+}
+
+.row {
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.row span {
+    color: #fff;
+    text-shadow: 5px 5px 0 #ca3121;
+    font-size: 84px;
+    display: inline-block;
+    opacity: 0;
+    transition: transform 0.5s ease-in, opacity 0.7s;
+}
+
+/* Birthday Cake */
+.cake-container {
+    position: absolute;
+    width: 200px;
+    height: 150px;
+    left: 50%;
+    top: 30%;
+    transform: translateX(-50%);
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 1s ease-in;
+}
+
+.cake {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.cake-bottom {
+    position: absolute;
+    width: 160px;
+    height: 60px;
+    background: #f9c5d1;
+    border-radius: 10px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 5px 0 #e8a8b8;
+}
+
+.cake-middle {
+    position: absolute;
+    width: 140px;
+    height: 50px;
+    background: #f9e1e5;
+    border-radius: 8px;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 5px 0 #e8c8cc;
+}
+
+.cake-top {
+    position: absolute;
+    width: 120px;
+    height: 40px;
+    background: #fff;
+    border-radius: 6px;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 5px 0 #f0f0f0;
+}
+
+.candle {
+    position: absolute;
+    width: 8px;
+    height: 30px;
+    background: #fff;
+    bottom: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.flame {
+    position: absolute;
+    width: 15px;
+    height: 25px;
+    background: #ffde7d;
+    border-radius: 50% 50% 20% 20%;
+    bottom: 145px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 20px #ffde7d, 0 0 40px #ffde7d;
+    animation: flicker 0.5s infinite alternate;
+}
+
+@keyframes flicker {
+    0% { transform: translateX(-50%) scale(1); opacity: 1; }
+    100% { transform: translateX(-50%) scale(1.1, 0.9); opacity: 0.8; }
+}
+
+/* Decorative Elements */
+.balloons {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.balloon {
+    position: absolute;
+    width: 60px;
+    height: 80px;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: float 8s infinite ease-in-out;
+}
+
+.balloon:before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 60px;
+    background: #333;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.balloon:nth-child(1) {
+    background: #ff9ff3;
+    left: 10%;
+    top: 20%;
+    animation-delay: 0s;
+}
+
+.balloon:nth-child(2) {
+    background: #feca57;
+    left: 25%;
+    top: 30%;
+    animation-delay: 1s;
+}
+
+.balloon:nth-child(3) {
+    background: #ff6b6b;
+    left: 75%;
+    top: 25%;
+    animation-delay: 2s;
+}
+
+.balloon:nth-child(4) {
+    background: #48dbfb;
+    left: 85%;
+    top: 35%;
+    animation-delay: 3s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(5deg); }
+    50% { transform: translateY(-20px) rotate(-5deg); }
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #f9ca24;
+    opacity: 0;
+    animation: confettiFall 5s linear infinite;
+}
+
+@keyframes confettiFall {
+    0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+.step-1 .giftbox {
+    animation: wobble 0.5s linear infinite forwards;
+}
+
+.step-1 .cover {
+    animation: wobble 0.5s linear infinite 0.1s forwards;
+}
+
+.step-1 .icons .row span {
+    opacity: 1;
+}
+
+.step-2 .giftbox:after {
+    opacity: 0;
+}
+
+.step-3 .giftbox,
+.step-4 .giftbox {
+    opacity: 0;
+    z-index: 1;
+}
+
+.step-3 .giftbox:after,
+.step-4 .giftbox:after {
+    opacity: 0;
+}
+
+.step-3 .cake-container {
+    opacity: 1;
+}
+
+.step-4 .cake-container {
+    opacity: 1;
+}
+
+.step-2 .giftbox .cover {
+    animation: flyUp 0.4s ease-in forwards;
+}
+
+.step-2 .giftbox .box {
+    animation: flyDown 0.2s ease-in 0.05s forwards;
+}
+
+@keyframes wobble {
+    25% {
+        transform: rotate(4deg);
+    }
+    75% {
+        transform: rotate(-2deg);
+    }
+}
+
+@keyframes flyUp {
+    75% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-1000px) rotate(20deg);
+        opacity: 0;
+    }
+}
+
+@keyframes flyDown {
+    75% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+}
+
+.step-1 .icons .row span {
+    opacity: 0;
+}
+
+.step-1 .icons .row span:first-child {
+    transform: translateY(700%) translateX(600%);
+}
+
+.step-1 .icons .row span:nth-child(2) {
+    transform: translateY(700%) translateX(500%);
+}
+
+.step-1 .icons .row span:nth-child(3) {
+    transform: translateY(700%) translateX(400%);
+}
+
+.step-1 .icons .row span:nth-child(4) {
+    transform: translateY(700%) translateX(300%);
+}
+
+.step-1 .icons .row span:nth-child(5) {
+    transform: translateY(700%) translateX(200%);
+}
+
+.step-1 .icons .row span:nth-child(6) {
+    transform: translateY(700%) translateX(100%);
+}
+
+.step-1 .icons .row span:nth-child(7) {
+    transform: translateY(700%) translateX(0);
+}
+
+.step-1 .icons .row span:nth-child(8) {
+    transform: translateY(700%) translateX(-100%);
+}
+
+.step-1 .icons .row span:nth-child(9) {
+    transform: translateY(700%) translateX(-200%);
+}
+
+.step-1 .icons .row span:nth-child(10) {
+    transform: translateY(700%) translateX(-300%);
+}
+
+.step-1 .icons .row span:nth-child(11) {
+    transform: translateY(700%) translateX(-400%);
+}
+
+.step-1 .icons .row span:nth-child(12) {
+    transform: translateY(700%) translateX(-500%);
+}
+
+.step-1 .icons .row span:nth-child(13) {
+    transform: translateY(700%) translateX(-600%);
+}
+
+.step-2 .icons .row span:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+.step-2 .icons .row span:nth-child(3) {
+    transition-delay: 0.15s;
+}
+
+.step-2 .icons .row span:nth-child(4) {
+    transition-delay: 0.2s;
+}
+
+.step-2 .icons .row span:nth-child(5) {
+    transition-delay: 0.25s;
+}
+
+.step-2 .icons .row span:nth-child(6) {
+    transition-delay: 0.3s;
+}
+
+.step-2 .icons .row span:nth-child(7) {
+    transition-delay: 0.35s;
+}
+
+.step-2 .icons .row span:nth-child(8) {
+    transition-delay: 0.4s;
+}
+
+.step-2 .icons .row span:nth-child(9) {
+    transition-delay: 0.45s;
+}
+
+.step-2 .icons .row span:nth-child(10) {
+    transition-delay: 0.5s;
+}
+
+.step-2 .icons .row span:nth-child(11) {
+    transition-delay: 0.55s;
+}
+
+.step-2 .icons .row span:nth-child(12) {
+    transition-delay: 0.6s;
+}
+
+.step-2 .icons .row span:nth-child(13) {
+    transition-delay: 0.65s;
+}
+
+.step-2 .icons span,
+.step-3 .icons span,
+.step-4 .icons span {
+    opacity: 0.7;
+    transition-timing-function: cubic-bezier(0.000, 0.000, 0.200, 0.910);
+}
+
+.step-4 .icons .row span,
+.step-3 .icons .row span {
+    animation: wobble 0.6s linear infinite forwards;
+}
+
+.step-4 .icons .row span:nth-child(even),
+.step-3 .icons .row span:nth-child(even) {
+    animation-duration: 0.7s;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .giftbox {
+        width: 250px;
+        margin-left: -125px;
+    }
+    
+    .row span {
+        font-size: 64px;
+    }
+
+    .cake-container {
+        width: 150px;
+        height: 120px;
+    }
+
+    .cake-bottom {
+        width: 120px;
+        height: 50px;
+    }
+
+    .cake-middle {
+        width: 100px;
+        height: 40px;
+    }
+
+    .cake-top {
+        width: 80px;
+        height: 30px;
+    }
+
+    .candle {
+        height: 25px;
+    }
+
+    .flame {
+        bottom: 140px;
+    }
+}
+
+@media (max-width: 480px) {
+    .giftbox {
+        width: 200px;
+        margin-left: -100px;
+        height: 150px;
+    }
+    
+    .giftbox:after {
+        font-size: 18px;
+    }
+    
+    .row span {
+        font-size: 48px;
+    }
+
+    .cake-container {
+        width: 120px;
+        height: 100px;
+        top: 35%;
+    }
+
+    .cake-bottom {
+        width: 90px;
+        height: 40px;
+    }
+
+    .cake-middle {
+        width: 70px;
+        height: 30px;
+        bottom: 35px;
+    }
+
+    .cake-top {
+        width: 50px;
+        height: 20px;
+        bottom: 60px;
+    }
+
+    .candle {
+        height: 20px;
+        width: 5px;
+    }
+
+    .flame {
+        width: 10px;
+        height: 15px;
+        bottom: 130px;
+    }
+}
+
+@media (max-height: 600px) {
+    .giftbox {
+        bottom: 20px;
+    }
+
+    .cake-container {
+        top: 25%;
+    }
+}
